@@ -152,15 +152,17 @@
         radial-gradient(720px 360px at 90% 85%, rgba(56,189,248,.07), transparent 58%);
       border-bottom: 1px solid var(--line);
     }
+
+    /* ✅ عکس بالا کوچکتر + متن زیرش */
     .heroGrid{
       display:grid;
-      grid-template-columns: 320px 1fr;
-      gap:16px;
-      align-items:center;
+      grid-template-columns: 1fr;
+      gap:14px;
+      align-items:start;
     }
-    @media (max-width:860px){ .heroGrid{grid-template-columns:1fr} }
-
     .portraitCard{
+      width:min(260px, 86vw);
+      margin: 0 auto;
       background: linear-gradient(135deg, rgba(250,204,21,.10), rgba(255,255,255,.02));
       border:1px solid rgba(255,255,255,.08);
       border-radius: 28px;
@@ -208,6 +210,7 @@
       100%{transform:translateX(18%) rotate(18deg); opacity:0}
     }
 
+    .heroText{padding: 0 2px;}
     .name{font-size:26px; font-weight:800; margin:0 0 6px; letter-spacing:.20em; text-indent:.20em;}
     .role{margin:0 0 10px; font-size:13px; color:var(--muted);}
 
@@ -326,14 +329,13 @@
     }
     .mediaBox iframe{width:100%; border:0; display:block;}
 
-    /* ✅ صوت‌ها کوچکتر و جمع‌وجورتر */
-    .audio iframe{height: 60px}
+    /* صوت‌ها کوچکتر و منظم‌تر */
+    .audio iframe{height: 58px}
     .video iframe{height: 260px}
     @media (max-width:560px){ .video iframe{height: 210px} }
     .file iframe{height: 420px}
     @media (max-width:560px){ .file iframe{height: 360px} }
 
-    /* ✅ گرید صوت‌ها منظم‌تر */
     .audGrid{
       display:grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
@@ -344,7 +346,7 @@
     @media (max-width:760px){ .audGrid{grid-template-columns: repeat(2, minmax(0,1fr));} }
     @media (max-width:520px){ .audGrid{grid-template-columns: 1fr} }
 
-    /* گالری */
+    /* ✅ گالری: نمایش کامل تصویر (بدون کراپ) */
     .grid{
       display:grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
@@ -358,12 +360,19 @@
       overflow:hidden;
       border:1px solid rgba(148,163,184,.22);
       background:#040712;
-      aspect-ratio: 4/3;
+      height: 220px;               /* ارتفاع ثابت برای نظم */
       box-shadow: 0 10px 24px rgba(0,0,0,.48);
+      display:grid;
+      place-items:center;
     }
-    .ph iframe{width:100%; height:100%; border:0; display:block}
+    .ph img{
+      width:100%;
+      height:100%;
+      object-fit:contain;          /* ✅ کل عکس نمایش داده می‌شود */
+      display:block;
+    }
+    .ph iframe{width:100%; height:100%; border:0; display:block;} /* fallback */
 
-    /* نیت روزانه */
     .niyat{
       margin-top: 12px;
       padding: 14px 14px 12px;
@@ -505,7 +514,7 @@
 
             <div class="metaRow">
               <div class="chip"><b>محل خدمت:</b> جزیره مینو، آبادان</div>
-              <div class="chip"><b>ویژگی:</b> مومن غیرتمند </div>
+              <div class="chip"><b>ویژگی:</b> مومن غیرتمند</div>
               <div class="chip">فرزند رامهرمز</div>
             </div>
 
@@ -514,7 +523,7 @@
               <a class="btn" href="#bio" data-open="bio">📖 زندگی‌نامه</a>
               <a class="btn" href="#media" data-open="media">🎬 کلیپ</a>
               <a class="btn" href="#gallery" data-open="gallery">🖼️ عکس‌ها</a>
-              <a class="btn" href="#spiritualAudiosSection">🎧 صوت‌ها</a>
+              <a class="btn" href="#audios" data-open="audios">🎧 صوت‌ها</a>
               <a class="btn primary" href="#notes" data-open="notes">💌 دل‌نوشته</a>
               <a class="btn" href="#khademContact">🤝 ارتباط</a>
               <button class="btn" id="shareBtn" type="button">🔗 کپی لینک صفحه</button>
@@ -662,16 +671,29 @@
           </div>
         </details>
 
-        <!-- 5) صوت‌ها -->
-        <section class="niyat" id="spiritualAudiosSection">
-          <h3>🎧 صوت‌های معنوی</h3>
-          <div class="text" style="margin-top:6px; font-size:12px; color:var(--muted);">
-            اگر پلیرها نمایش داده نشدند، از لینک‌های مستقیم همین پایین استفاده کنید.
-          </div>
+        <!-- 5) صوت‌ها (✅ باز و بسته شونده مثل بقیه) -->
+        <details class="section" id="audios">
+          <summary>
+            <div class="sumLeft">
+              <div class="ico">🎧</div>
+              <div class="sumTitle">
+                <b>صوت‌های معنوی</b>
+                <span>برای باز کردن، کلیک کنید</span>
+              </div>
+            </div>
+            <div class="chev">⌄</div>
+          </summary>
 
-          <div id="spiritualAudios" class="audGrid" style="margin-top:10px;"></div>
-          <div id="spiritualLinks" class="text" style="margin-top:10px; font-size:12px; color:var(--muted);"></div>
-        </section>
+          <div class="body">
+            <div class="divider"></div>
+            <div class="text" style="font-size:12px; color:var(--muted);">
+              اگر پلیرها نمایش داده نشدند، از لینک‌های مستقیم همین پایین استفاده کنید.
+            </div>
+
+            <div id="spiritualAudios" class="audGrid" style="margin-top:10px;"></div>
+            <div id="spiritualLinks" class="text" style="margin-top:10px; font-size:12px; color:var(--muted);"></div>
+          </div>
+        </details>
 
         <!-- 6) دلنوشته -->
         <details class="section" id="notes">
@@ -735,13 +757,19 @@
 
         <!-- 7) ارتباط -->
         <section class="niyat" id="khademContact">
-          <h3>🤝 ارتباط با خادم</h3>
+          <h3>🤝 ارتباط با ما</h3>
+
           <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;">
             <a class="btn primary" id="tgLink2" target="_blank" rel="noopener">تلگرام</a>
             <a class="btn" id="igLink2" target="_blank" rel="noopener">اینستاگرام</a>
+            <a class="btn" id="waLink" target="_blank" rel="noopener">واتساپ</a>
+            <a class="btn" id="eitaaLink" target="_blank" rel="noopener">ایتا</a>
           </div>
+
           <div class="text" style="margin-top:10px; font-size:12px; color:var(--muted);">
-            تلگرام: @ba_khatereha0
+            تلگرام: <span style="color:var(--gold)">@ba_khatereha0</span><br>
+            ایتا: <span style="color:var(--gold)">@ba_khatereha0</span><br>
+            واتساپ: <a id="waText" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:none;">لینک</a>
           </div>
         </section>
 
@@ -757,7 +785,7 @@
   <nav class="dock" aria-label="دسترسی سریع">
     <a href="#top">⬆️ بالا</a>
     <a href="#will" data-open="will">📜 وصیت</a>
-    <a href="#notes" data-open="notes">💌 دل‌نوشته</a>
+    <a href="#audios" data-open="audios">🎧 صوت</a>
     <a href="#khademContact">🤝 ارتباط</a>
     <button type="button" id="dockShare">🔗 لینک</button>
   </nav>
@@ -779,7 +807,6 @@
       willAttachUrl: "https://drive.google.com/file/d/1ZqvLFKjcVCvvA67BCaEJ2f9G5N5iVTEj/view?usp=sharing",
       bioAttachUrl:  "https://drive.google.com/file/d/1aDY7bvWxB0FCxsgo5DUmnrkJzh4Em1GQ/view?usp=sharing",
 
-      /* ✅ صوت‌ها (جدیدها هم اضافه شد) */
       spiritualAudioUrls: [
         "https://drive.google.com/file/d/1QqghFpRPw17yBCF6xqBG-Oj2H6gqg3zo/view?usp=sharing",
         "https://drive.google.com/file/d/16nQEsuQoZwBITSRJZujWcHqNvFvAHwGM/view?usp=sharing",
@@ -787,7 +814,6 @@
         "https://drive.google.com/file/d/1e--I4xNb-atHtZiQ4-1HKnVTx3RPWHIT/view?usp=sharing",
         "https://drive.google.com/file/d/1yzqBE7BaMvZElcGP3uv1ss1NOlMIC2VZ/view?usp=sharing",
         "https://drive.google.com/file/d/12h8tr9wsuTcDVdCmV-x2F1ZK59NZUPE_/view?usp=sharing",
-
         "https://drive.google.com/file/d/1JK2w0z3yzvG0v2c2wrfRdCd5VrwLTUTz/view?usp=sharing",
         "https://drive.google.com/file/d/1fPMU6zCEecLj8NDZOpwaCdMZnAf2SqRz/view?usp=sharing",
         "https://drive.google.com/file/d/1aBlYaA1sUGDPnYU2BQCGHJASERcX6lDX/view?usp=sharing",
@@ -827,8 +853,13 @@
       telegramUrl: "https://t.me/ba_khatereha0",
       instagramUrl: "https://www.instagram.com/ba_khatereha04?igsh=MXZwaG5vazVnZXAybw==",
 
+      whatsappUrl: "https://wa.me/message/ZPIGMPOYZJKBK1",
+      eitaaHandle: "@ba_khatereha0",
+      eitaaUrl: "https://eitaa.com/ba_khatereha0",
+
       anniversaryJalali: { jm: 10, jd: 22 },
 
+      /* بک‌گراند */
       backgroundPhotoUrl: "https://drive.google.com/file/d/1yy50o_IMX0l267AQWo8mW99ZUQd64iVJ/view?usp=sharing"
     };
 
@@ -852,6 +883,7 @@
         `https://drive.google.com/uc?export=download&id=${id}`
       ];
     }
+
     function setBackgroundFromDrive(urlOrId){
       const el = document.getElementById("bgPhoto");
       if (!el) return;
@@ -933,36 +965,72 @@
     setTimeout(() => { if (!notesLoaded) notesWarn.classList.add("show"); }, 7000);
 
     /***********************
-     * Social
+     * Contact links
      ***********************/
     const tg2 = document.getElementById("tgLink2");
     const ig2 = document.getElementById("igLink2");
+    const waLink = document.getElementById("waLink");
+    const waText = document.getElementById("waText");
+    const eitaaLink = document.getElementById("eitaaLink");
+
     tg2.href = CONFIG.telegramUrl;
     tg2.textContent = `تلگرام: ${CONFIG.telegramHandle}`;
+
     ig2.href = CONFIG.instagramUrl;
     ig2.textContent = "اینستاگرام";
 
+    waLink.href = CONFIG.whatsappUrl;
+    waLink.textContent = "واتساپ";
+    waText.href = CONFIG.whatsappUrl;
+
+    eitaaLink.href = CONFIG.eitaaUrl;
+    eitaaLink.textContent = `ایتا: ${CONFIG.eitaaHandle}`;
+
     /***********************
-     * Galleries
+     * Galleries (✅ img + fallback iframe)
      ***********************/
     function mountGallery(urls, elId){
       const root = document.getElementById(elId);
       root.innerHTML = "";
+
       (urls || []).forEach(u => {
         const box = document.createElement("div");
         box.className = "ph";
-        const iframe = document.createElement("iframe");
-        iframe.src = drivePreview(u);
-        iframe.allow = "autoplay";
-        box.appendChild(iframe);
+
+        const candidates = driveImageCandidates(u);
+        const img = document.createElement("img");
+        img.alt = "تصویر";
+        img.loading = "lazy";
+        img.referrerPolicy = "no-referrer";
+
+        let idx = 0;
+        function tryNext(){
+          if (idx >= candidates.length){
+            // fallback: iframe
+            box.innerHTML = "";
+            const iframe = document.createElement("iframe");
+            iframe.src = drivePreview(u);
+            iframe.allow = "autoplay";
+            iframe.loading = "lazy";
+            box.appendChild(iframe);
+            return;
+          }
+          img.src = candidates[idx++];
+        }
+
+        img.onload = () => {};
+        img.onerror = () => tryNext();
+
+        box.appendChild(img);
         root.appendChild(box);
+        tryNext();
       });
     }
     mountGallery(CONFIG.galleryShahidUrls, "gridShahid");
     mountGallery(CONFIG.galleryFamilyUrls, "gridFamily");
 
     /***********************
-     * Spiritual audios (با حذف تکراری‌ها) + لینک مستقیم
+     * Spiritual audios (حذف تکراری‌ها) + لینک مستقیم
      ***********************/
     function dedupeDriveUrls(urls){
       const seen = new Set();
