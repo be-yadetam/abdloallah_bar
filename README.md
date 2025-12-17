@@ -1,3 +1,4 @@
+[shahidbar4.html](https://github.com/user-attachments/files/24221724/shahidbar4.html)
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
@@ -6,10 +7,10 @@
   <title>یادبود سرباز شهید عبدالله برء</title>
   <meta name="theme-color" content="#070a12" />
 
-  <!-- فونت‌های جذاب‌تر (وب) + حفظ B Nazanin (اگر روی دستگاه نصب باشد) -->
+  <!-- فونت جایگزین (اگر B Nazanin نصب نبود) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;600;700;800&family=Lalezar&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -23,14 +24,9 @@
       --gold:#facc15;
       --radius: 22px;
       --shadow: 0 26px 90px rgba(0,0,0,.72);
-
-      /* فونت‌ها */
-      --font-body: "Vazirmatn","B Nazanin","BNazanin",system-ui,-apple-system,"Segoe UI",sans-serif;
-      --font-title: "Lalezar","Vazirmatn","B Nazanin","BNazanin",sans-serif;
-      --font-nastaliq: "Noto Nastaliq Urdu","Lalezar","Vazirmatn","B Nazanin","BNazanin",serif;
     }
 
-    /* تلاش برای استفاده از B Nazanin (اگر روی دستگاه نصب باشد) */
+    /* ✅ فونت بی‌نازنین (اگر روی دستگاه نصب باشد) */
     @font-face{
       font-family:"B Nazanin";
       src: local("B Nazanin"), local("BNazanin");
@@ -41,16 +37,34 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family: var(--font-body);
+      font-family:"B Nazanin","BNazanin","Vazirmatn", system-ui, -apple-system, "Segoe UI", sans-serif;
       color:var(--text);
       background: radial-gradient(1200px 700px at 20% 0%, rgba(250,204,21,.08), transparent 60%),
                   radial-gradient(900px 520px at 100% 0%, rgba(34,197,94,.10), transparent 55%),
                   radial-gradient(900px 520px at 50% 120%, rgba(56,189,248,.09), transparent 60%),
                   linear-gradient(180deg, var(--bg1), var(--bg0));
       overflow-x:hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
+    }
+
+    /* ✅ بک‌گراند عکس شهید (با حفظ رنگ‌بندی قبلی) */
+    .bgPhoto{
+      position:fixed; inset:0;
+      z-index:-6;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      opacity:.14;
+      filter: contrast(1.05) saturate(1.05);
+      pointer-events:none;
+    }
+    .bgPhoto:after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(1200px 700px at 20% 0%, rgba(250,204,21,.10), transparent 60%),
+        radial-gradient(900px 520px at 100% 0%, rgba(34,197,94,.12), transparent 55%),
+        radial-gradient(900px 520px at 50% 120%, rgba(56,189,248,.11), transparent 60%),
+        linear-gradient(180deg, rgba(6,10,24,.35), rgba(5,7,17,.88));
     }
 
     canvas#stars{
@@ -121,14 +135,7 @@
       box-shadow: 0 0 18px rgba(250,204,21,.20);
       font-size:18px;
     }
-    .brand h1{
-      margin:0;
-      font-size:16px;
-      letter-spacing:.10em;
-      text-indent:.10em;
-      font-weight:700;
-      font-family: var(--font-title);
-    }
+    .brand h1{margin:0; font-size:15px; letter-spacing:.14em; text-indent:.14em; font-weight:700;}
     .brand p{margin:2px 0 0; font-size:11px; color:var(--muted);}
     .basmala{font-size:11px; color:#fef9c3; letter-spacing:.12em; text-align:left; white-space:nowrap;}
     .basmala b{color:var(--gold); font-weight:700}
@@ -178,19 +185,6 @@
       pointer-events:none;
       box-shadow: inset 0 0 34px rgba(0,0,0,.72);
     }
-    .heroBadge{
-      position:absolute;
-      bottom:10px;
-      right:10px;
-      padding:6px 10px;
-      border-radius:999px;
-      background: rgba(5,8,20,.72);
-      border:1px solid rgba(250,204,21,.35);
-      color:#fef9c3;
-      font-size:11px;
-      backdrop-filter: blur(10px);
-      pointer-events:none;
-    }
     .ring{
       position:absolute; inset:-40%;
       background: conic-gradient(from 220deg, rgba(250,204,21,.85), rgba(34,197,94,.55), rgba(56,189,248,.55), rgba(250,204,21,.85));
@@ -215,17 +209,7 @@
       100%{transform:translateX(18%) rotate(18deg); opacity:0}
     }
 
-    /* فونت جذاب برای نام */
-    .name{
-      font-size:28px;
-      margin:0 0 6px;
-      font-family: var(--font-nastaliq);
-      font-weight:700;
-      line-height:1.6;
-      letter-spacing:.02em;
-      text-indent:0;
-      text-shadow: 0 6px 26px rgba(0,0,0,.55);
-    }
+    .name{font-size:26px; font-weight:800; margin:0 0 6px; letter-spacing:.20em; text-indent:.20em;}
     .role{margin:0 0 10px; font-size:13px; color:var(--muted);}
 
     .metaRow{display:flex; flex-wrap:wrap; gap:8px; margin: 10px 0 10px;}
@@ -325,11 +309,7 @@
       font-size:16px;
     }
     .sumTitle{display:flex; flex-direction:column; gap:3px;}
-    .sumTitle b{
-      font-size:14px;
-      font-family: var(--font-title);
-      letter-spacing:.02em;
-    }
+    .sumTitle b{font-size:13px;}
     .sumTitle span{font-size:11px; color:var(--muted);}
     .chev{color: var(--muted); transition: transform .18s ease, color .18s ease; font-size:14px;}
     details[open] .chev{transform: rotate(180deg); color: var(--gold);}
@@ -339,27 +319,33 @@
     .divider{height:1px; background: linear-gradient(to left, transparent, rgba(148,163,184,.45), transparent); margin: 8px 0 10px;}
 
     .mediaBox{
-      border-radius: 16px;
+      border-radius: 14px;
       overflow:hidden;
       border: 1px solid rgba(148,163,184,.28);
       background:#040712;
       box-shadow: 0 10px 26px rgba(0,0,0,.45);
     }
     .mediaBox iframe{width:100%; border:0; display:block;}
-    .audio iframe{height: 72px}
+
+    /* ✅ صوت‌ها کوچکتر و جمع‌وجورتر */
+    .audio iframe{height: 60px}
     .video iframe{height: 260px}
     @media (max-width:560px){ .video iframe{height: 210px} }
     .file iframe{height: 420px}
     @media (max-width:560px){ .file iframe{height: 360px} }
 
+    /* ✅ گرید صوت‌ها منظم‌تر */
     .audGrid{
       display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:8px;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap:6px;
+      align-items:stretch;
     }
-    @media (max-width:900px){ .audGrid{grid-template-columns: repeat(2, minmax(0,1fr));} }
-    @media (max-width:640px){ .audGrid{grid-template-columns: 1fr} }
+    @media (max-width:980px){ .audGrid{grid-template-columns: repeat(3, minmax(0,1fr));} }
+    @media (max-width:760px){ .audGrid{grid-template-columns: repeat(2, minmax(0,1fr));} }
+    @media (max-width:520px){ .audGrid{grid-template-columns: 1fr} }
 
+    /* گالری */
     .grid{
       display:grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
@@ -378,6 +364,7 @@
     }
     .ph iframe{width:100%; height:100%; border:0; display:block}
 
+    /* نیت روزانه */
     .niyat{
       margin-top: 12px;
       padding: 14px 14px 12px;
@@ -391,7 +378,6 @@
       font-size:14px;
       color: var(--gold);
       display:flex; align-items:center; gap:8px;
-      font-family: var(--font-title);
     }
     .niyatGrid{
       display:grid;
@@ -476,6 +462,7 @@
 </head>
 
 <body>
+  <div class="bgPhoto" id="bgPhoto" aria-hidden="true"></div>
   <div class="glow"></div>
   <canvas id="stars"></canvas>
 
@@ -497,10 +484,8 @@
           <div class="portraitCard">
             <div class="ring"></div>
             <div class="shine"></div>
-
             <div class="portrait" id="heroPortrait" title="برای دیدن عکس بعدی کلیک کنید">
               <iframe id="heroPhoto" allow="autoplay"></iframe>
-              <div class="heroBadge" id="heroBadge">عکس ۱ از ۱</div>
             </div>
           </div>
 
@@ -521,7 +506,7 @@
 
             <div class="metaRow">
               <div class="chip"><b>محل خدمت:</b> جزیره مینو، آبادان</div>
-              <div class="chip"><b>ویژگی:</b> مومن غیرتمند</div>
+              <div class="chip"><b>ویژگی:</b> مومن غیرتمند </div>
               <div class="chip">فرزند رامهرمز</div>
             </div>
 
@@ -783,6 +768,8 @@
      * CONFIG
      ***********************/
     const CONFIG = {
+      heroRotateMs: 10000,
+
       heroPhotoUrls: [
         "https://drive.google.com/file/d/1yy50o_IMX0l267AQWo8mW99ZUQd64iVJ/view?usp=sharing",
         "https://drive.google.com/file/d/1QAdl-ElJadkdnegFWFc8WGtgAlHj-AAf/view?usp=sharing"
@@ -793,13 +780,22 @@
       willAttachUrl: "https://drive.google.com/file/d/1ZqvLFKjcVCvvA67BCaEJ2f9G5N5iVTEj/view?usp=sharing",
       bioAttachUrl:  "https://drive.google.com/file/d/1aDY7bvWxB0FCxsgo5DUmnrkJzh4Em1GQ/view?usp=sharing",
 
+      /* ✅ صوت‌ها (جدیدها هم اضافه شد) */
       spiritualAudioUrls: [
         "https://drive.google.com/file/d/1QqghFpRPw17yBCF6xqBG-Oj2H6gqg3zo/view?usp=sharing",
         "https://drive.google.com/file/d/16nQEsuQoZwBITSRJZujWcHqNvFvAHwGM/view?usp=sharing",
         "https://drive.google.com/file/d/1kiYnCfKqEhUNdY2SFjZhIAIduerAv4EK/view?usp=sharing",
         "https://drive.google.com/file/d/1e--I4xNb-atHtZiQ4-1HKnVTx3RPWHIT/view?usp=sharing",
         "https://drive.google.com/file/d/1yzqBE7BaMvZElcGP3uv1ss1NOlMIC2VZ/view?usp=sharing",
-        "https://drive.google.com/file/d/12h8tr9wsuTcDVdCmV-x2F1ZK59NZUPE_/view?usp=sharing"
+        "https://drive.google.com/file/d/12h8tr9wsuTcDVdCmV-x2F1ZK59NZUPE_/view?usp=sharing",
+
+        "https://drive.google.com/file/d/1JK2w0z3yzvG0v2c2wrfRdCd5VrwLTUTz/view?usp=sharing",
+        "https://drive.google.com/file/d/1fPMU6zCEecLj8NDZOpwaCdMZnAf2SqRz/view?usp=sharing",
+        "https://drive.google.com/file/d/1aBlYaA1sUGDPnYU2BQCGHJASERcX6lDX/view?usp=sharing",
+        "https://drive.google.com/file/d/1Xyv406O85A1rpwlaSdcBMf_zRbSTDMrH/view?usp=sharing",
+        "https://drive.google.com/file/d/1opLY2Ip_mJ2k2R1uPpv8i_0fuxU1K8rI/view?usp=sharing",
+        "https://drive.google.com/file/d/1xKgcvg4llrqE_OScikScF4hRPbQKZxZO/view?usp=sharing",
+        "https://drive.google.com/file/d/14YGVP9PhsxC3mj36HXuatzieLGUv6RtI/view?usp=sharing"
       ],
 
       galleryFamilyUrls: [
@@ -834,7 +830,7 @@
 
       anniversaryJalali: { jm: 10, jd: 22 },
 
-      heroRotateMs: 10000  // ✅ هر ۱۰ ثانیه
+      backgroundPhotoUrl: "https://drive.google.com/file/d/1yy50o_IMX0l267AQWo8mW99ZUQd64iVJ/view?usp=sharing"
     };
 
     /***********************
@@ -849,20 +845,39 @@
     }
     const drivePreview = (urlOrId) => `https://drive.google.com/file/d/${getDriveId(urlOrId)}/preview`;
 
-    /***********************
-     * HERO: چرخش عکس‌ها (دو عکس بالا + همه عکس‌های شهید)
-     ***********************/
-    const heroIframe = document.getElementById("heroPhoto");
-    const heroPortrait = document.getElementById("heroPortrait");
-    const heroBadge = document.getElementById("heroBadge");
+    function driveImageCandidates(urlOrId){
+      const id = getDriveId(urlOrId);
+      return [
+        `https://drive.google.com/thumbnail?id=${id}&sz=w2400`,
+        `https://drive.google.com/uc?export=view&id=${id}`,
+        `https://drive.google.com/uc?export=download&id=${id}`
+      ];
+    }
+    function setBackgroundFromDrive(urlOrId){
+      const el = document.getElementById("bgPhoto");
+      if (!el) return;
+      const candidates = driveImageCandidates(urlOrId);
+      let i = 0;
+      function tryNext(){
+        if (i >= candidates.length) return;
+        const src = candidates[i++];
+        const img = new Image();
+        img.onload = () => { el.style.backgroundImage = `url("${src}")`; };
+        img.onerror = tryNext;
+        img.src = src;
+      }
+      tryNext();
+    }
+    setBackgroundFromDrive(CONFIG.backgroundPhotoUrl);
 
-    // ✅ لیست نهایی عکس‌های هدر: دو عکس + کل عکس‌های شهید (بدون تکراری)
+    /***********************
+     * HERO rotate (دو عکس بالا + همه عکس‌های شهید)
+     ***********************/
     function buildHeroList(){
       const list = [
         ...(CONFIG.heroPhotoUrls || []),
         ...(CONFIG.galleryShahidUrls || [])
       ];
-
       const seen = new Set();
       const unique = [];
       for (const u of list){
@@ -876,15 +891,15 @@
     }
 
     const HERO_LIST = buildHeroList();
+    const heroIframe = document.getElementById("heroPhoto");
+    const heroPortrait = document.getElementById("heroPortrait");
     let heroIndex = 0;
 
     function setHero(i){
       const len = HERO_LIST.length || 1;
       heroIndex = ((i % len) + len) % len;
       heroIframe.src = drivePreview(HERO_LIST[heroIndex]);
-      if (heroBadge) heroBadge.textContent = `عکس ${heroIndex + 1} از ${len}`;
     }
-
     setHero(0);
 
     if (HERO_LIST.length > 1){
@@ -899,12 +914,8 @@
      * Video / Attachments
      ***********************/
     document.getElementById("memVideo").src = drivePreview(CONFIG.memorialVideoUrl);
-
-    const willAttach = document.getElementById("willAttach");
-    if (willAttach) willAttach.src = drivePreview(CONFIG.willAttachUrl);
-
-    const bioAttach = document.getElementById("bioAttach");
-    if (bioAttach) bioAttach.src = drivePreview(CONFIG.bioAttachUrl);
+    document.getElementById("willAttach").src = drivePreview(CONFIG.willAttachUrl);
+    document.getElementById("bioAttach").src  = drivePreview(CONFIG.bioAttachUrl);
 
     /***********************
      * Notes iframe + لینک
@@ -915,29 +926,22 @@
     notesOpenBtn.href = CONFIG.notesAppUrl;
 
     const notesApp = document.getElementById("notesApp");
-    const notesSrc = CONFIG.notesAppUrl + (CONFIG.notesAppUrl.includes("?") ? "&" : "?") + "embed=1";
-    notesApp.src = notesSrc;
+    notesApp.src = CONFIG.notesAppUrl + (CONFIG.notesAppUrl.includes("?") ? "&" : "?") + "embed=1";
 
     const notesWarn = document.getElementById("notesWarn");
     let notesLoaded = false;
     notesApp.addEventListener("load", () => { notesLoaded = true; });
-    setTimeout(() => {
-      if (!notesLoaded) notesWarn.classList.add("show");
-    }, 7000);
+    setTimeout(() => { if (!notesLoaded) notesWarn.classList.add("show"); }, 7000);
 
     /***********************
      * Social
      ***********************/
     const tg2 = document.getElementById("tgLink2");
     const ig2 = document.getElementById("igLink2");
-    if (tg2){
-      tg2.href = CONFIG.telegramUrl;
-      tg2.textContent = `تلگرام: ${CONFIG.telegramHandle}`;
-    }
-    if (ig2){
-      ig2.href = CONFIG.instagramUrl;
-      ig2.textContent = "اینستاگرام";
-    }
+    tg2.href = CONFIG.telegramUrl;
+    tg2.textContent = `تلگرام: ${CONFIG.telegramHandle}`;
+    ig2.href = CONFIG.instagramUrl;
+    ig2.textContent = "اینستاگرام";
 
     /***********************
      * Galleries
@@ -959,35 +963,46 @@
     mountGallery(CONFIG.galleryFamilyUrls, "gridFamily");
 
     /***********************
-     * Spiritual audios + لینک مستقیم
+     * Spiritual audios (با حذف تکراری‌ها) + لینک مستقیم
      ***********************/
+    function dedupeDriveUrls(urls){
+      const seen = new Set();
+      const out = [];
+      for (const u of (urls || [])){
+        const id = getDriveId(u);
+        if (!id) continue;
+        if (seen.has(id)) continue;
+        seen.add(id);
+        out.push(u);
+      }
+      return out;
+    }
+
     function mountAudioList(urls, elId, linksId){
       const root = document.getElementById(elId);
       const linksRoot = document.getElementById(linksId);
 
-      if (root){
-        root.innerHTML = "";
-        (urls || []).forEach((u, idx) => {
-          const box = document.createElement("div");
-          box.className = "mediaBox audio";
+      const list = dedupeDriveUrls(urls);
 
-          const iframe = document.createElement("iframe");
-          iframe.src = drivePreview(u);
-          iframe.allow = "autoplay";
-          iframe.loading = "lazy";
-          iframe.title = `صوت معنوی ${idx+1}`;
+      root.innerHTML = "";
+      list.forEach((u, idx) => {
+        const box = document.createElement("div");
+        box.className = "mediaBox audio";
 
-          box.appendChild(iframe);
-          root.appendChild(box);
-        });
-      }
+        const iframe = document.createElement("iframe");
+        iframe.src = drivePreview(u);
+        iframe.allow = "autoplay";
+        iframe.loading = "lazy";
+        iframe.title = `صوت معنوی ${idx+1}`;
 
-      if (linksRoot){
-        const list = (urls || []).map((u, i) =>
-          `<a href="${u}" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:none;">صوت ${i+1}</a>`
-        ).join(" • ");
-        linksRoot.innerHTML = `لینک‌های مستقیم: ${list}`;
-      }
+        box.appendChild(iframe);
+        root.appendChild(box);
+      });
+
+      const links = list.map((u, i) =>
+        `<a href="${u}" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:none;">صوت ${i+1}</a>`
+      ).join(" • ");
+      linksRoot.innerHTML = `لینک‌های مستقیم: ${links}`;
     }
     mountAudioList(CONFIG.spiritualAudioUrls, "spiritualAudios", "spiritualLinks");
 
@@ -1158,7 +1173,6 @@
         s: Math.random()*0.35 + 0.05
       }));
     }
-
     function tick(){
       ctx.clearRect(0,0,W,H);
       for (const d of dots){
@@ -1175,7 +1189,6 @@
       ctx.globalAlpha = 1;
       requestAnimationFrame(tick);
     }
-
     window.addEventListener("resize", resize);
     resize();
     tick();
